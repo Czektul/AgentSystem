@@ -25,7 +25,8 @@ namespace MainApp
                 HeightOfSpace,
                 CellSize,
                 CountOfAgentsA,
-                CountOfAgentsB);
+                CountOfAgentsB,
+                RandomSeed);
         }
     }
 }
