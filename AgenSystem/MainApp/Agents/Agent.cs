@@ -14,7 +14,7 @@ namespace MainApp.Agents
     {
         public readonly SlotState Type;
 
-        protected Position Position;
+        public  Position Position;
 
         private Label letterLabel;
 
@@ -73,7 +73,7 @@ namespace MainApp.Agents
 
         public void ReDraw()
         {
-            Location = new System.Drawing.Point(Position.WorldX, Position.WorldY);
+            Location = new Point(Position.WorldX, Position.WorldY);
             letterLabel.BringToFront();
             letterLabel.BringToFront();
             letterLabel.Update();
@@ -81,5 +81,7 @@ namespace MainApp.Agents
         }
 
         public abstract void ProcessMovement();
+
+
     }
 }

@@ -75,8 +75,14 @@ namespace MainApp.Agents
             return !(pos.X < 0 || pos.X >= Width || pos.Y < 0 || pos.Y >= Width);
         }
 
-        public static void Initialize(ref Panel parent, ref Timer updateAgentsTimer, int width, int height, int cellSize, int agentsACount,
-            int agentsBCount, int seed = 0)
+        public static void Initialize(ref Panel parent,
+                                      ref Timer updateAgentsTimer, 
+                                      int width, 
+                                      int height, 
+                                      int cellSize, 
+                                      int agentsACount,
+                                      int agentsBCount, 
+                                      int seed)
         {
             if (IsInitialized) throw new Exception("Already initialized!");
 
