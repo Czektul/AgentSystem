@@ -30,17 +30,23 @@ namespace MainApp
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.AgentsSandbox = new System.Windows.Forms.Panel();
+            this.updateAgentsTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // AgentsSandbox
             // 
             this.AgentsSandbox.BackColor = System.Drawing.SystemColors.InfoText;
-            this.AgentsSandbox.Location = new System.Drawing.Point(0, 0);
+            this.AgentsSandbox.Location = new System.Drawing.Point(2, 0);
             this.AgentsSandbox.Name = "AgentsSandbox";
             this.AgentsSandbox.Size = new System.Drawing.Size(346, 249);
             this.AgentsSandbox.TabIndex = 0;
+            // 
+            // updateAgentsTimer
+            // 
+            this.updateAgentsTimer.Interval = 2;
             // 
             // MainWindow
             // 
@@ -59,6 +65,7 @@ namespace MainApp
 
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Panel AgentsSandbox;
+        private System.Windows.Forms.Timer updateAgentsTimer;
     }
 }
 

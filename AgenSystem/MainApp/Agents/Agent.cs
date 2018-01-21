@@ -16,6 +16,8 @@ namespace MainApp.Agents
 
         protected Position Position;
 
+        private Label letterLabel;
+
         protected Agent(Control parent, Position initPosition, SlotState type)
         {
             Parent = parent;
@@ -23,47 +25,61 @@ namespace MainApp.Agents
             Type = type;
             AgentsManager.Slot(Position) = this;
             SetLayout();
-            UpdateAgent();
-
+            ReDraw();
             Console.WriteLine($"Created Agent on : {Position.X},{Position.Y}");
         }
 
         private void SetLayout()
         {
-            var label = new Label {Parent = this, Anchor = AnchorStyles.Left};
+            letterLabel = new Label
+            {
+                Parent = this,
+                Anchor = AnchorStyles.Left,
+                ForeColor = Color.Blue,
+                Location = new Point(0,0)
+            };
+            letterLabel.BringToFront();
+            BorderStyle = BorderStyle.Fixed3D;
             Anchor = AnchorStyles.Left;
-            Size = new Size(AgentsManager.CellSize, AgentsManager.CellSize);
+            letterLabel.Size = Size = new Size(AgentsManager.CellSize, AgentsManager.CellSize);
             switch (Type)
             {
                 case SlotState.AgentA:
                     BackColor = AgentsManager.AgentAColor;
-                    label.Text = "A";
+                    letterLabel.Text = "A";
                     break;
                 case SlotState.AgentB:
                     BackColor = AgentsManager.AgentBColor;
-                    label.Text = "B";
+                    letterLabel.Text = "B";
                     break;
             }
+            letterLabel.Update();
         }
 
         public bool MoveAgent(int deltaX, int deltaY)
         {
-            if (AgentsManager.GetSlotState(Position) != SlotState.Empty) return false;
+            var newPos = new Position() { X = Position.X + deltaX, Y = Position.Y + deltaY };
+
+            if (AgentsManager.GetSlotState(newPos) != SlotState.Empty)
+                return false;
+            if (!AgentsManager.IsSlotInside(newPos))
+                return false;
+
             AgentsManager.Slot(Position) = null;
-            Position.X += deltaX;
-            Position.Y += deltaY;
-            AgentsManager.Slot(Position) = this;
+            this.Position = newPos;
+            AgentsManager.Slot(newPos) = this;
             return true;
         }
 
-        public virtual void UpdateAgent()
+        public void ReDraw()
         {
-            ProcessMovement();
             Location = new System.Drawing.Point(Position.WorldX, Position.WorldY);
+            letterLabel.BringToFront();
+            letterLabel.BringToFront();
+            letterLabel.Update();
             Update();
-            Parent.Update();
         }
 
-        protected abstract void ProcessMovement();
+        public abstract void ProcessMovement();
     }
 }

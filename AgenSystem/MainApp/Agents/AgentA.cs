@@ -17,7 +17,7 @@ namespace MainApp.Agents
 
         }
 
-        protected override void ProcessMovement()
+        public override void ProcessMovement()
         {
 
         }

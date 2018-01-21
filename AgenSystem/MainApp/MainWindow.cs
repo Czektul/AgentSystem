@@ -18,9 +18,11 @@ namespace MainApp
 
             InitializeComponent();
 
-            AgentsManager.Initialize(ref AgentsSandbox, 100, 100, 10, 50, 100);
+            AgentsManager.Initialize(ref AgentsSandbox, 75, 50, 20, 50, 100);
 
-            
+            updateAgentsTimer.Tick += (sender, args) => AgentsManager.UpdateAllAgents();
+            updateAgentsTimer.Start();
+
 
         }
 

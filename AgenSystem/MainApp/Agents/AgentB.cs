@@ -16,9 +16,24 @@ namespace MainApp.Agents
 
         }
 
-        protected override void ProcessMovement()
+        public override void ProcessMovement()
         {
-
+            var direction = AgentsManager.RNG.Next(4);
+            switch (direction)
+            {
+                case 0:
+                    MoveAgent(0, 1);
+                    break;
+                case 1:
+                    MoveAgent(1, 0);
+                    break;
+                case 2:
+                    MoveAgent(0, -1);
+                    break;
+                case 3:
+                    MoveAgent(-1, 0);
+                    break;
+            }
         }
     }
 }

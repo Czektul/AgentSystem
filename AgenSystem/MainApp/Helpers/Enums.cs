@@ -6,7 +6,8 @@ namespace MainApp.Helpers
         {
             Empty,
             AgentA,
-            AgentB
+            AgentB,
+            OutOfBounds
         }
     }
 }
