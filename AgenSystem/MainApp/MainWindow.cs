@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MainApp.Agents;
+using static MainApp.SimulationConfiguration;
 
 namespace MainApp
 {
@@ -15,16 +16,16 @@ namespace MainApp
     {
         public MainWindow()
         {
-
             InitializeComponent();
 
-            AgentsManager.Initialize(ref AgentsSandbox, 75, 50, 20, 50, 100);
-
-            updateAgentsTimer.Tick += (sender, args) => AgentsManager.UpdateAllAgents();
-            updateAgentsTimer.Start();
-
-
+            
+            AgentsManager.Initialize(ref AgentsSandbox,
+                ref updateAgentsTimer,
+                WidthOfSpace,
+                HeightOfSpace,
+                CellSize,
+                CountOfAgentsA,
+                CountOfAgentsB);
         }
-
     }
 }

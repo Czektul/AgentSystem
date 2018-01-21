@@ -35,24 +35,24 @@ namespace MainApp.Agents
             {
                 Parent = this,
                 Anchor = AnchorStyles.Left,
-                ForeColor = Color.Blue,
+                ForeColor = SimulationConfiguration.FontColor,
                 Location = new Point(0,0)
             };
-            letterLabel.BringToFront();
             BorderStyle = BorderStyle.Fixed3D;
             Anchor = AnchorStyles.Left;
             letterLabel.Size = Size = new Size(AgentsManager.CellSize, AgentsManager.CellSize);
             switch (Type)
             {
                 case SlotState.AgentA:
-                    BackColor = AgentsManager.AgentAColor;
+                    BackColor = SimulationConfiguration.AgentAColor;
                     letterLabel.Text = "A";
                     break;
                 case SlotState.AgentB:
-                    BackColor = AgentsManager.AgentBColor;
+                    BackColor = SimulationConfiguration.AgentBColor;
                     letterLabel.Text = "B";
                     break;
             }
+            letterLabel.BringToFront();
             letterLabel.Update();
         }
 

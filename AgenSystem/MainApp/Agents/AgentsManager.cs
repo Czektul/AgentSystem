@@ -7,8 +7,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using MainApp.Helpers;
 using static MainApp.Helpers.Enums;
+using Timer = System.Windows.Forms.Timer;
 
 namespace MainApp.Agents
 {
@@ -30,8 +32,6 @@ namespace MainApp.Agents
                 return AgentsArray[0].Length;
             }
         }
-        public static Color AgentAColor { get; set; } = Color.Red;
-        public static Color AgentBColor { get; set; } = Color.Green;
 
         public static Agent[][] AgentsArray;
 
@@ -75,7 +75,7 @@ namespace MainApp.Agents
             return !(pos.X < 0 || pos.X >= Width || pos.Y < 0 || pos.Y >= Width);
         }
 
-        public static void Initialize(ref Panel parent, int width, int height, int cellSize, int agentsACount,
+        public static void Initialize(ref Panel parent, ref Timer updateAgentsTimer, int width, int height, int cellSize, int agentsACount,
             int agentsBCount, int seed = 0)
         {
             if (IsInitialized) throw new Exception("Already initialized!");
@@ -91,7 +91,12 @@ namespace MainApp.Agents
 
             parent.Width = width * cellSize;
             parent.Height = height * cellSize;
+            parent.BackColor = SimulationConfiguration.BackgroundColor;
             
+            updateAgentsTimer.Tick += (sender, args) => UpdateAllAgents();
+            updateAgentsTimer.Interval = SimulationConfiguration.StepCalculatingInterval;
+            updateAgentsTimer.Start();
+
             IsInitialized = true;
 
             CreateAgents(AgentsParentPanel, agentsACount, agentsBCount);
