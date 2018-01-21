@@ -1,4 +1,6 @@
-﻿namespace MainApp
+﻿using MainApp.Agents;
+
+namespace MainApp
 {
     partial class MainWindow
     {
@@ -29,7 +31,16 @@
         private void InitializeComponent()
         {
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.AgentsSandbox = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // AgentsSandbox
+            // 
+            this.AgentsSandbox.BackColor = System.Drawing.SystemColors.InfoText;
+            this.AgentsSandbox.Location = new System.Drawing.Point(0, 0);
+            this.AgentsSandbox.Name = "AgentsSandbox";
+            this.AgentsSandbox.Size = new System.Drawing.Size(346, 249);
+            this.AgentsSandbox.TabIndex = 0;
             // 
             // MainWindow
             // 
@@ -37,6 +48,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(855, 498);
+            this.Controls.Add(this.AgentsSandbox);
             this.Name = "MainWindow";
             this.Text = "AgentSystem";
             this.ResumeLayout(false);
@@ -46,6 +58,7 @@
         #endregion
 
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Panel AgentsSandbox;
     }
 }
 

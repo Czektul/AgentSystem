@@ -51,21 +51,22 @@
     <Compile Include="Agents\AgentB.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Agents\AgentBase.cs">
+    <Compile Include="Agents\Agent.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Agents\AgentsManager.cs" />
+    <Compile Include="Helpers\Enums.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Position.cs" />
+    <Compile Include="Helpers\Position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Agents\AgentBase.resx">
-      <DependentUpon>AgentBase.cs</DependentUpon>
+    <EmbeddedResource Include="Agents\Agent.resx">
+      <DependentUpon>Agent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
@@ -92,8 +93,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helpers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MainApp.Agents;
 
 namespace MainApp
 {
@@ -17,6 +18,9 @@ namespace MainApp
 
             InitializeComponent();
 
+            AgentsManager.Initialize(ref AgentsSandbox, 100, 100, 10, 50, 100);
+
+            
 
         }
 
